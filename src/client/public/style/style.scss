@@ -1,38 +1,92 @@
-@import "./breakPoints";
-
-* {
-  box-sizing: border-box;
-}
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
 
 body {
-  background-attachment: fixed;
+  font-family: Arial, sans-serif;
   background-image: url("../images/Travel-Appimage.jpg");
-  // background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: "REM", sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  .container {
-    min-height: 100vh;
-    .site-header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
+h1 {
+  text-align: center;
+  color: $primary-color;
+}
+
+form {
+  margin: 20px auto;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid $secondary-color;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+
+  div {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: $secondary-color;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $secondary-color;
+    border-radius: 4px;
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:nth-child(1) {
+        background-color: $primary-color;
+        color: #fff;
+      }
+
+      &:nth-child(2) {
+        background-color: $success-color;
+        color: #fff;
+      }
+
+      &:nth-child(3) {
+        background-color: $secondary-color;
+        color: #fff;
+      }
     }
+  }
+}
 
+#results {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid $secondary-color;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
 
-    #form_row {
-      width: 90%;
-      @include respond-to("lg") {
-        width: 50%;
-      }
-      #city_error{
-        display: none;
-      }
-      #date_error{
-        display: none;
-      }
-    }
+  h3 {
+    margin-top: 10px;
+    color: $primary-color;
+  }
+
+  div {
+    margin: 5px 0;
   }
 }

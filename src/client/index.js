@@ -1,10 +1,6 @@
+import "../client/public/style/style.scss";
+import { submitForm } from "./scripts/submitForm";
+import { displayTrip } from "./scripts/printTrip";
+import { deleteTrip } from "./scripts/deleteTrip";
 
-import "./public/style/style.scss"
-
-import { handleSubmit } from "./script/handleForm";
-
-
-
-export {
-    handleSubmit
-}
+export { submitForm, displayTrip, deleteTrip };
