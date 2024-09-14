@@ -2,12 +2,13 @@
 
 ## Project Overview
 
-The Travel App allows users to plan trips by providing weather information and images for the destination. The app integrates with multiple APIs like Geonames, Weatherbit, and Pixabay to deliver a rich user experience.
+The Travel App allows users to plan Journey by providing weather information and images for the destination. The app integrates with multiple APIs like Geonames, Weatherbit, and Pixabay to deliver a rich user experience.
 
 ## Features
 
 - Search for weather data based on location and date.
 - Display the Remianing days.
+- Check Input Validity .
 - Fetch images of the destination using Pixabay API.
 - Responsive design for use on both desktop and mobile devices.
 

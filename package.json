@@ -10,7 +10,7 @@
     "start": "nodemon src/server/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Maymoona BaniOudeh",
   "license": "ISC",
   "engines": {
     "node": "20.9.0"

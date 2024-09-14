@@ -2,12 +2,13 @@ import axios from "axios";
 import { calculateRemainingDays } from "./calculateRemainingDays";
 import { checkInputValidity } from "./checkInputValidity";
 
-const formElement = document.querySelector("form");
-const departureDateInput = document.querySelector("#date");
 const cityErrorElement = document.querySelector("#city-error");
 const cityInputElement = document.querySelector("#city");
 const dateErrorElement = document.querySelector("#date-error");
+const departureDateInput = document.querySelector("#date");
+const JourneyDataElement = document.getElementById('Journey-data'); // Select the Journey-data section
 
+// Handle form submission
 const handleFormSubmission = async (event) => {
   event.preventDefault();
 
@@ -40,12 +41,12 @@ const handleFormSubmission = async (event) => {
       }
 
       dateErrorElement.style.display = "none";
-      console.log("Weather Data:", weatherData);
-
       const imageData = await fetchCityImage(name);
-      console.log("Image Data:", imageData);
 
       updateDisplay(daysRemaining, name, imageData, weatherData);
+
+      // Show the #Journey-data section after the data is successfully fetched
+      JourneyDataElement.style.display = 'block';
     } else {
       console.error("Departure date input is missing.");
     }
@@ -54,10 +55,10 @@ const handleFormSubmission = async (event) => {
   }
 };
 
+// Fetch city data
 const fetchCityData = async (cityName) => {
   try {
     const { data } = await axios.post("http://localhost:8000/getCity", { city: cityName });
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching city data:", error);
@@ -65,6 +66,7 @@ const fetchCityData = async (cityName) => {
   }
 };
 
+// Fetch weather data
 const fetchWeatherData = async (lng, lat, daysRemaining) => {
   try {
     const { data } = await axios.post("http://localhost:8000/getWeather", { lat, lng, daysRemaining });
@@ -75,10 +77,10 @@ const fetchWeatherData = async (lng, lat, daysRemaining) => {
   }
 };
 
+// Fetch city image
 const fetchCityImage = async (cityName) => {
   try {
     const { data } = await axios.post("http://localhost:8000/getImage", { cityName });
-    console.log("Data from fetchCityImage:", data);
     return data;
   } catch (error) {
     console.error("Error fetching city image:", error);
@@ -86,10 +88,9 @@ const fetchCityImage = async (cityName) => {
   }
 };
 
+// Update the display with fetched data
 const updateDisplay = (daysRemaining, cityName, imageData, weatherData) => {
-  console.log("Image URL:", imageData.image);
-
-  document.querySelector("#trip-duration").innerHTML = `Your journey starts in ${daysRemaining} days`;
+  document.querySelector("#Journey-duration").innerHTML = `Your journey starts in ${daysRemaining} days`;
   document.querySelector(".city-name").innerHTML = `City: ${cityName}`;
 
   document.querySelector(".weather-info").innerHTML =
@@ -108,23 +109,12 @@ const updateDisplay = (daysRemaining, cityName, imageData, weatherData) => {
     daysRemaining > 7 ? `Min Temperature: ${weatherData.app_min_temp}&degC` : "";
 
   if (imageData && imageData.image) {
-    console.log("Updating image with URL:", imageData.image);
-    document.querySelector(".city-image").innerHTML = `
-      <img 
-      src="${imageData.image}" 
-      alt="City view"
-      >
-    `;
+    document.querySelector(".city-image").src = imageData.image;
   } else {
-    document.querySelector(".city-image").innerHTML = `Image not available.`;
-  }
-
-  const flightDataContainer = document.querySelector(".flight-data");
-  if (flightDataContainer) {
-    flightDataContainer.style.display = "block";
-  } else {
-    console.error("Flight data container not found.");
+    document.querySelector(".city-image").alt = "Image not available.";
   }
 };
+
+document.querySelector('form').addEventListener('submit', handleFormSubmission);
 
 export { handleFormSubmission };
