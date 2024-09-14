@@ -1,15 +1,16 @@
-$primary-color: #007bff;
-$secondary-color: #6c757d;
+// Color variables for the theme
+$primary-color: #007bff; 
+$secondary-color: #6c757d; 
 $success-color: #28a745;
-$background-color: #e9f5ff;
-$highlight-color: #ff9800;
-$accent-color: #f44336;
-$text-color: #333;
-$mobile-breakpoint: 768px;
+$background-color: #e9f5ff; 
+$highlight-color: #ff9800; 
+$accent-color: #f44336; 
+$text-color: #333; 
+$mobile-breakpoint: 768px; 
 
 body {
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  background-image: url("../images/Travel-Appimage.jpg");
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-image: url("../images/Travel-Appimage.jpg"); // Travel App background image
   background-size: cover;
   background-position: center;
   margin: 0;
@@ -20,8 +21,8 @@ body {
 
 h1 {
   text-align: center;
-  color: $primary-color;
-  font-size: 2.5rem;
+  color: $primary-color; // Main heading color
+  font-size: 2rem;
   margin-top: 20px;
 }
 
@@ -29,10 +30,10 @@ form {
   margin: 20px auto;
   max-width: 600px;
   padding: 70px;
-  border: 2px solid $primary-color;
+  border: 2px solid $primary-color; // Border uses the primary blue color
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9); // Light background for form
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Adds a shadow for depth
 
   div {
     margin-bottom: 20px;
@@ -41,7 +42,8 @@ form {
   label {
     display: block;
     margin-bottom: 8px;
-    color: $primary-color;
+    font-size: 1.5rem;
+    color: $primary-color; // Label text colored with the primary theme
     font-weight: bold;
   }
 
@@ -49,35 +51,36 @@ form {
   input[type="date"] {
     width: 100%;
     padding: 20px;
-    border: 2px solid $secondary-color;
+    border: 2px solid $secondary-color; // Uses the secondary neutral color
     border-radius: 8px;
-    font-size: 1.1rem;
-    transition: all 0.3s ease-in-out;
+    font-size: 1.3rem;
+    transition: all 0.3s ease-in-out; // Smooth transition for focus effects
 
     &:focus {
-      border-color: $primary-color;
-      box-shadow: 0 0 10px rgba($primary-color, 0.5);
+      border-color: $primary-color; // Border turns primary blue on focus
+      box-shadow: 0 0 10px rgba($primary-color, 0.5); // Adds a blue shadow on focus
     }
   }
 
   .form-buttons {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; // Allows buttons to wrap on small screens
 
     button {
+      font-size:large;
       padding: 15px 35px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease; // Smooth transition on hover
 
       &:nth-child(1) {
         background-color: $primary-color;
         color: #fff;
 
         &:hover {
-          background-color: darken($primary-color, 30%);
+          background-color: darken($primary-color, 30%); // Darkens the button on hover
         }
       }
 
@@ -86,7 +89,7 @@ form {
         color: #fff;
 
         &:hover {
-          background-color: darken($highlight-color, 30%);
+          background-color: darken($highlight-color, 30%); // Darkens the button on hover
         }
       }
 
@@ -95,7 +98,7 @@ form {
         color: #fff;
 
         &:hover {
-          background-color: darken($accent-color, 30%);
+          background-color: darken($accent-color, 30%); // Darkens the button on hover
         }
       }
     }
@@ -103,25 +106,25 @@ form {
 }
 
 #Journey-data {
-  display: none; 
+  display: none; // Initially hidden, shown only after form submission
   margin: 30px auto;
   padding: 20px;
   border: 2px solid $secondary-color;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9); // Transparent background for data section
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Adds depth with a shadow
   max-width: 600px;
 
   img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); // Shadow for the image
   }
 
   h3 {
     margin-top: 15px;
-    color: $highlight-color;
+    color: $highlight-color; // Highlight color for city name
     font-size: 1.8rem;
   }
 
@@ -131,30 +134,31 @@ form {
 
   .weather-info, .temperature {
     font-size: 1.2rem;
-    color: $primary-color;
+    color: $primary-color; // Consistent use of the primary color for weather info
   }
 }
 
+// Styles for mobile screens
 @media (max-width: $mobile-breakpoint) {
   form, #Journey-data {
-    max-width: 100%;
-    padding: 15px;
+    max-width: 100%; // Makes the form and data section responsive
+    padding: 15px; // Reduces padding for mobile view
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2rem; // Reduces heading size for smaller screens
   }
 
   .form-buttons {
-    flex-direction: column;
+    flex-direction: column; // Stacks buttons vertically on small screens
 
     button {
-      margin-top: 10px;
+      margin-top: 10px; // Adds space between stacked buttons
       width: 100%;
     }
   }
 
   img {
-    max-width: 100%;
+    max-width: 100%; // Ensures images are responsive
   }
 }

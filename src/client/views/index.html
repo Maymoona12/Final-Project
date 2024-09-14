@@ -8,34 +8,37 @@
   <body>
     <!-- Form -->
     <h1>Travel App: Select City & Date</h1>
-    <form onsubmit="return Client.handleFormSubmission(event)">
-      <div>
-        <label for="city">City</label>
-        <input type="text" name="city" id="city" />
-        <div id="city-error" style="color: orange"></div>
-      </div>
-      <div>
-        <label for="start-date">Departure Date</label>
-        <input type="date" name="date" id="date" />
-        <div id="date-error" style="color: orange"></div>
-      </div>
-      <div class="form-buttons">
-        <button type="submit">Submit Journey</button>
-        <button type="button" onclick="return Client.printJourneyDetails()">Display Journey</button>
-        <button type="button" onclick="return Client.clearJourneyData()">Delete Journey</button>
-      </div>
-    </form>
+ <!-- Form for submitting city and departure date -->
+ <form onsubmit="return Client.handleFormSubmission(event)">
+  <div>
+    <label for="city">City</label>
+    <input type="text" name="city" id="city" /> <!-- Input field for city name -->
+    <div id="city-error" style="color: orange"></div> <!-- Error message for city input -->
+  </div>
+  <div>
+    <label for="start-date">Departure Date</label>
+    <input type="date" name="date" id="date" /> <!-- Input field for departure date -->
+    <div id="date-error" style="color: orange"></div> <!-- Error message for date input -->
+  </div>
+  <div class="form-buttons">
+    <!-- Buttons for form actions -->
+    <button type="submit">Submit Journey</button> <!-- Submits the form and triggers data fetch -->
+    <button type="button" onclick="return Client.printJourneyDetails()">Display Journey</button> <!-- Displays the journey details -->
+    <button type="button" onclick="return Client.clearJourneyData()">Delete Journey</button> <!-- Clears the journey data -->
+  </div>
+</form>
 
     <!-- Journey Info -->
     <section class="card" id="Journey-data">
+      <!-- Container for journey information -->
       <div id="weather-card">
-        <img src="" class="city-image" id="city-picture" />
-        <h3 class="city-name"></h3>
-        <div id="Journey-duration"></div>
-        <div class="weather-info"></div>
-        <div class="temperature"></div>
-        <div class="max-temp"></div>
-        <div class="min-temp"></div>
+        <img src="" class="city-image" id="city-picture" /> <!-- Image of the city -->
+        <h3 class="city-name"></h3> <!-- Name of the city -->
+        <div id="Journey-duration"></div> <!-- Information on journey duration -->
+        <div class="weather-info"></div> <!-- Weather information -->
+        <div class="temperature"></div> <!-- Temperature information -->
+        <div class="max-temp"></div> <!-- Maximum temperature -->
+        <div class="min-temp"></div> <!-- Minimum temperature -->
       </div>
     </section>
   </body>
