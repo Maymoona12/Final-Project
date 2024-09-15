@@ -39,16 +39,21 @@ app.post("/getCity", async (req, res) => {
 
 // POST route to get weather data based on latitude, longitude, and days remaining to the trip
 app.post("/getWeather", async (req, res) => {
-  const { lat, lng, remainingDays } = req.body; // Extract lat, lng, and remainingDays from the request body
-  const weatherInfo = await fetchWeatherData(lat, lng, remainingDays, weatherApiKey); // Fetch weather data using the provided function
+  const { lat, lng, daysRemaining } = req.body; // notice the change
+  const weatherInfo = await fetchWeatherData(lat, lng, daysRemaining, weatherApiKey); // Fetch weather data using the provided function
   res.send(weatherInfo); // Send the weather data back to the client
 });
 
 // POST route to get an image of the city based on the city name
 app.post("/getImage", async (req, res) => {
-  const { cityName } = req.body; // Extract city name from the request body
-  const imageUrl = await fetchCityImage(cityName, pixabayApiKey); // Fetch city image using the provided function
-  res.send(imageUrl); // Send the image URL back to the client
+  try {
+    const { cityName } = req.body; // Extract city name from the request body
+    const imageUrl = await fetchCityImage(cityName, pixabayApiKey); // Fetch city image using the provided function
+    res.send(imageUrl); // Send the image URL back to the client
+  } catch (error) {
+    console.error("Error fetching city image:", error.message); // Log error message for debugging
+    res.status(500).send({ message: "Error fetching city image", error: true }); // Send error response if something goes wrong
+  }
 });
 
 // Export the app instance for testing
